@@ -1,15 +1,15 @@
-import BusinessFinance from "./pages/BusinessFinance"
+import BusinessFinance from "./pages/BusinessFinance";
 import DifferentNews from "./pages/DifferentNews";
 import Entertainment from "./pages/Entertainment";
 import Politics from "./pages/Politics";
 import Sports from "./pages/Sports";
-import Home from "./pages/Home"
-import ErrorPage from "./pages/ErrorPage"
+import App from "./App";
+import ErrorPage from "./pages/ErrorPage";
 
 const routes = [
   {
     path: "/",
-    element: <Home />,
+    element: <App />,
     errorElement: <ErrorPage />,
     children: [
       {
