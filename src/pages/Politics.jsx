@@ -1,62 +1,45 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
+import NewsItems from "../components/NewsItems";
+import { API_KEY } from 'dotenv/config'; 
 
 const Politics = () => {
-  const API_KEY = 'a460f9a4e3ec42e4a683de26c6c7ab57'; // Your News API key
-  const [newsData, setNewsData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
   const [page, setPage] = useState(1);
+  const [newsData, setNewsData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const fetchNewsData = useCallback(async () => {
+    const pageSize = 10; // Number of articles per page
+    const url = `https://newsapi.org/v2/top-headlines?q=politics&country=us&pageSize=${pageSize}&page=${page}&apiKey=${API_KEY}`;
 
-  useEffect(() => {
-    const fetchNewsData = async () => {
-      const pageSize = 10; // Number of articles per page
-      const url = `https://newsapi.org/v2/top-headlines?q=politics&country=us&pageSize=${pageSize}&page=${page}&apiKey=${API_KEY}`;
+    setLoading(true);
 
-      try {
-        const response = await fetch(url);
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
-        const newData = data.articles;
-        setNewsData((prevData) => [...prevData, ...newData]); // Append new data to existing data
-      } catch (error) {
-        console.error('Error fetching news data:', error);
-        setError('Error fetching news data. Please try again later.');
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchNewsData();
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      setNewsData(prevNewsData => [...prevNewsData, ...data.articles]);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
   }, [page, API_KEY]); // Fetch data whenever page or API_KEY changes
 
+  useEffect(() => {
+    fetchNewsData();
+  }, [fetchNewsData]);
+
   const handleLoadMore = () => {
-    setPage((prevPage) => prevPage + 1); // Increment page to fetch more articles
+    setPage(prevPage => prevPage + 1);
   };
 
   return (
-    <div>
-      <h1>Politics Page</h1>
-      {loading && <p>Loading news data...</p>}
-      {error && <p>{error}</p>}
-      <ul>
-        {!loading &&
-          !error &&
-          newsData.map((article, index) => (
-            <li key={index} style={{ marginBottom: '20px' }}>
-              <strong>{article.title}</strong>
-              <p>{article.description}</p>
-              <p>Author: {article.author || 'Unknown'}</p>
-              <p>Published: {new Date(article.publishedAt).toLocaleString()}</p>
-            </li>
-          ))}
-      </ul>
-      {!loading && !error && (
-        <button onClick={handleLoadMore} style={{ marginTop: '20px' }}>
-          Load More
+    <div className="container">
+      <h1 className="text-center">Politics News</h1>
+      <NewsItems newsData={newsData} loading={loading} />
+      <div className="text-center">
+        <button className="btn btn-primary" onClick={handleLoadMore} disabled={loading}>
+          {loading ? 'Loading...' : 'Load More'}
         </button>
-      )}
+      </div>
     </div>
   );
 };
