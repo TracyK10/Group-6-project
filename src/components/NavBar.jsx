@@ -1,4 +1,4 @@
-import React from "react";
+
 import {Link} from "react-router-dom";
 
 function NavBar(){
@@ -6,16 +6,19 @@ function NavBar(){
         <nav className="navbar">
             <ul>
                 <li>
-                    <Link>Entertainment</Link>
+                    <Link to="/entertainment">Entertainment</Link>
                 </li>
                 <li>
-                    <Link >Politics</Link>
+                    <Link to="/politics">Politics</Link>
                 </li>
                 <li>
-                    <Link >Business</Link>
+                    <Link to="/finance">Business</Link>
                 </li>
                 <li>
-                    <Link >Sports</Link>
+                    <Link to="/sports" >Sports</Link>
+                </li>
+                <li>
+                  <Link to="/othernews">Different News</Link>
                 </li>
             </ul>
         </nav>
