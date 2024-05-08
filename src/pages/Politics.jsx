@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
-
 const Politics = () => {
+  const API_KEY = 'a460f9a4e3ec42e4a683de26c6c7ab57'; // Your News API key
   const [newsData, setNewsData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -9,13 +9,16 @@ const Politics = () => {
 
   useEffect(() => {
     const fetchNewsData = async () => {
-      const API_KEY = 'a460f9a4e3ec42e4a683de26c6c7ab57';
       const pageSize = 10; // Number of articles per page
       const url = `https://newsapi.org/v2/top-headlines?q=politics&country=us&pageSize=${pageSize}&page=${page}&apiKey=${API_KEY}`;
 
       try {
-        const response = await axios.get(url);
-        const newData = response.data.articles;
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        const newData = data.articles;
         setNewsData((prevData) => [...prevData, ...newData]); // Append new data to existing data
       } catch (error) {
         console.error('Error fetching news data:', error);
@@ -26,7 +29,7 @@ const Politics = () => {
     };
 
     fetchNewsData();
-  }, [page]); // Fetch data whenever page changes
+  }, [page, API_KEY]); // Fetch data whenever page or API_KEY changes
 
   const handleLoadMore = () => {
     setPage((prevPage) => prevPage + 1); // Increment page to fetch more articles
