@@ -1,6 +1,6 @@
 
 
-function NavBar() {
+function Politics() {
   return (
     <div>
       
@@ -8,4 +8,4 @@ function NavBar() {
   )
 }
 
-export default NavBar
+export default Politics
