@@ -1,6 +1,6 @@
 
 
-function NavBar() {
+function Sports() {
   return (
     <div>
       
@@ -8,4 +8,4 @@ function NavBar() {
   )
 }
 
-export default NavBar
+export default Sports
