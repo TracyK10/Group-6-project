@@ -18,7 +18,7 @@ function NavBar(){
                     <Link to="/sports" >Sports</Link>
                 </li>
                 <li>
-                  <Link to="/othernews">Different News</Link>
+                  <Link to="/othernews">Other News</Link>
                 </li>
             </ul>
         </nav>
