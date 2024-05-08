@@ -11,31 +11,28 @@ const routes = [
     path: "/",
     element: <Home />,
     errorElement: <ErrorPage />,
-  },
-  {
-    path: "/othernews",
-    element: <DifferentNews />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "/finance",
-    element: <BusinessFinance />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "/politics",
-    element: <Politics />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "/sports",
-    element: <Sports />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "/entertainment",
-    element: <Entertainment />,
-    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "/othernews",
+        element: <DifferentNews />,
+      },
+      {
+        path: "/finance",
+        element: <BusinessFinance />,
+      },
+      {
+        path: "/politics",
+        element: <Politics />,
+      },
+      {
+        path: "/sports",
+        element: <Sports />,
+      },
+      {
+        path: "/entertainment",
+        element: <Entertainment />,
+      },
+    ],
   },
 ];
 
