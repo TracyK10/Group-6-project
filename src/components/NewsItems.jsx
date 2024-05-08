@@ -11,25 +11,40 @@ function NewsItems({ news }) {
   // eslint-disable-next-line react/prop-types
   const { title, description, url, urlToImage, author } = news;
   return (
-    <Card sx={{ maxWidth: 345, border: "1px solid #e0e0e0", borderRadius: "8px" }}>
-      <CardMedia sx={{ height: 140 }} image={urlToImage} title="news-content" />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          {title}
-        </Typography>
-        <Typography gutterBottom variant="h7" component="div">
-          {author}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {description}
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Link to={url}>
-          <Button variant="contained" size="small">Learn More</Button>
-        </Link>
-      </CardActions>
-        </Card>
+    <div className="cards">
+      <Card
+        sx={{
+          maxWidth: 345,
+          border: "1px solid #e0e0e0",
+          borderRadius: "8px",
+          boxShadow: "7px 10px 20px grey",
+        }}
+      >
+        <CardMedia
+          sx={{ height: 180 }}
+          image={urlToImage}
+          title="news-content"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            {title}
+          </Typography>
+          <Typography gutterBottom variant="h7" component="div">
+            {author}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {description}
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Link to={url}>
+            <Button variant="contained" size="small">
+              Learn More
+            </Button>
+          </Link>
+        </CardActions>
+      </Card>
+    </div>
   );
 }
 

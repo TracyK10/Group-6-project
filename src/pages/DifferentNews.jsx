@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import NewsItems from "../components/NewsItems";
+import NavBar from "../components/NavBar"
 
 function DifferentNews() {
   const API_KEY = import.meta.env.VITE_SECRET_KEY;
@@ -15,11 +16,16 @@ useEffect(() => {
 
   return (
     <div>
-      <h1>Other News</h1>
+      <header>
+        <NavBar />
+      </header>
+      <h1 style={{textAlign: 'center', textDecoration:'underline'}}>Other News</h1>
+      <div  style={{display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap', paddingLeft:20}}>
     {
-      news.map(article => (
+        news.map(article => (
       <NewsItems key={article.id} news={article} />
-      ))}
+        ))}
+      </div>
     </div>
   )
 }
