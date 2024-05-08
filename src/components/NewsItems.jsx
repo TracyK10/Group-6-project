@@ -1,17 +1,22 @@
+
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 
-function NewsItems() {
+// eslint-disable-next-line react/prop-types
+function NewsItems({ news }) {
+  // eslint-disable-next-line react/prop-types
+  const { title, description, url, urlImage, author } = news;
   return (
     <Card style={{ width: "18rem" }}>
-      <Card.Img variant="top" src="holder.js/100px180" />
+      <Card.Img variant="top" src={urlImage} />
       <Card.Body>
-        <Card.Title>{/*card title*/}</Card.Title>
-        <Card.Text>{/*card text*/}</Card.Text>
-        <Button variant="primary">
-          <Link to={"/othernews"}>Go somewhere</Link>
-        </Button>
+        <Card.Title>{author}</Card.Title>
+        <Card.Title>{title}</Card.Title>
+        <Card.Text>{description}</Card.Text>
+        <Link to={url}>
+          <Button variant="primary">Read More</Button>
+        </Link>
       </Card.Body>
     </Card>
   );

@@ -3,36 +3,39 @@ import DifferentNews from "./pages/DifferentNews";
 import Entertainment from "./pages/Entertainment";
 import Politics from "./pages/Politics";
 import Sports from "./pages/Sports";
-import App from "./App";
+import Home from "./pages/Home";
 import ErrorPage from "./pages/ErrorPage";
 
 const routes = [
   {
     path: "/",
-    element: <App />,
+    element: <Home />,
     errorElement: <ErrorPage />,
-    children: [
-      {
-        path: "/othernews",
-        element: <DifferentNews />,
-      },
-      {
-        path: "/finance",
-        element: <BusinessFinance />,
-      },
-      {
-        path: "/politics",
-        element: <Politics />,
-      },
-      {
-        path: "/sports",
-        element: <Sports />,
-      },
-      {
-        path: "/entertainment",
-        element: <Entertainment />,
-      },
-    ],
+  },
+  {
+    path: "/othernews",
+    element: <DifferentNews />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/finance",
+    element: <BusinessFinance />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/politics",
+    element: <Politics />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/sports",
+    element: <Sports />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/entertainment",
+    element: <Entertainment />,
+    errorElement: <ErrorPage />,
   },
 ];
 
