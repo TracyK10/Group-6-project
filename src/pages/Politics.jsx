@@ -1,35 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+
 
 const Politics = () => {
   const [newsData, setNewsData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     const fetchNewsData = async () => {
-      const options = {
-        method: 'POST',
-        url: 'https://newsnow.p.rapidapi.com/newsv2',
-        headers: {
-          'content-type': 'application/json',
-          'X-RapidAPI-Key': '5c1f8994d6msh7876da716b93a7ap19efc3jsne1e5b274854d',
-          'X-RapidAPI-Host': 'newsnow.p.rapidapi.com',
-        },
-        data: {
-          query: 'AI',
-          time_bounded: true,
-          from_date: '01/02/2021',
-          to_date: '05/06/2021',
-          location: 'us',
-          language: 'en',
-          page: 1,
-        },
-      };
+      const API_KEY = 'a460f9a4e3ec42e4a683de26c6c7ab57';
+      const pageSize = 10; // Number of articles per page
+      const url = `https://newsapi.org/v2/top-headlines?q=politics&country=us&pageSize=${pageSize}&page=${page}&apiKey=${API_KEY}`;
 
       try {
-        const response = await axios.request(options);
-        setNewsData(response.data);
+        const response = await axios.get(url);
+        const newData = response.data.articles;
+        setNewsData((prevData) => [...prevData, ...newData]); // Append new data to existing data
       } catch (error) {
         console.error('Error fetching news data:', error);
         setError('Error fetching news data. Please try again later.');
@@ -39,7 +26,11 @@ const Politics = () => {
     };
 
     fetchNewsData();
-  }, []);
+  }, [page]); // Fetch data whenever page changes
+
+  const handleLoadMore = () => {
+    setPage((prevPage) => prevPage + 1); // Increment page to fetch more articles
+  };
 
   return (
     <div>
@@ -49,15 +40,20 @@ const Politics = () => {
       <ul>
         {!loading &&
           !error &&
-          newsData.map((article) => (
-            <li key={article.id} style={{ marginBottom: '10px' }}>
+          newsData.map((article, index) => (
+            <li key={index} style={{ marginBottom: '20px' }}>
               <strong>{article.title}</strong>
               <p>{article.description}</p>
-              <p>Author: {article.author}</p>
-              <p>Published: {article.publishedAt}</p>
+              <p>Author: {article.author || 'Unknown'}</p>
+              <p>Published: {new Date(article.publishedAt).toLocaleString()}</p>
             </li>
           ))}
       </ul>
+      {!loading && !error && (
+        <button onClick={handleLoadMore} style={{ marginTop: '20px' }}>
+          Load More
+        </button>
+      )}
     </div>
   );
 };
