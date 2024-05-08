@@ -1,4 +1,5 @@
-function NewsItems() {
+
+function ErrorPage() {
     return (
       <div>
         
@@ -6,4 +7,4 @@ function NewsItems() {
     )
   }
   
-  export default NewsItems
+  export default ErrorPage
