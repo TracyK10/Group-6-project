@@ -5,7 +5,7 @@ function Highlights() {
   const API_KEY = "9337c7af91cb42c0ba5560f4edc64bb9";
 
   useEffect(() => {
-    fetch(`https://newsapi.org/v2/top-headlines?country=ke&apiKey=${API_KEY}`)
+    fetch(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`)
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
