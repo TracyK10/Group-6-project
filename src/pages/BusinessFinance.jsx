@@ -3,6 +3,12 @@
 import React from "react";
 
 function BusinessFinance() {
+  const pageStyle = {
+    backgroundColor: "#FFFFFF",
+    color: "#000000",
+    padding: "20px", 
+  };
+
   return (
     <div>
       <h2>Business & Finance</h2>
