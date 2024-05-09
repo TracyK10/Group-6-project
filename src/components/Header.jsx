@@ -1,11 +1,19 @@
 
+import React from 'react';
 
-function Header() {
+const Header = () => {
   return (
-    <div>
-      
-    </div>
-  )
-}
+    <header>
+      <h1>News App</h1>
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+  );
+};
 
-export default Header
+export default Header;
