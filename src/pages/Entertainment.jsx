@@ -1,10 +1,11 @@
 
+
 function Entertainment() {
-    return (
-      <div>
-        
-      </div>
-    )
-  }
-  
-  export default Entertainment
+  return (
+    <div>
+      
+    </div>
+  )
+}
+
+export default Entertainment

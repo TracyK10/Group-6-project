@@ -1,9 +1,11 @@
+
+
 function NewsSpecs() {
-    return (
-      <div>
-        
-      </div>
-    )
-  }
-  
-  export default NewsSpecs
+  return (
+    <div>
+      
+    </div>
+  )
+}
+
+export default NewsSpecs
