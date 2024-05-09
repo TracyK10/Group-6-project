@@ -6,6 +6,7 @@ import Header from "../components/Header";
 
 function Sports() {
   const [news, setArticle] = useState([]);
+  
 
   useEffect(() => {
     fetch(
