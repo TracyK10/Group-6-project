@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from "react";
 import NewsItems from "../components/NewsItems";
- const API_KEY = process.env.API_KEY;
+const API_KEY = process.env.API_KEY;
 
 const Politics = () => {
   const [page, setPage] = useState(1);
@@ -15,7 +15,7 @@ const Politics = () => {
     try {
       const response = await fetch(url);
       const data = await response.json();
-      setNewsData(prevNewsData => [...prevNewsData, ...data.articles]);
+      setNewsData((prevNewsData) => [...prevNewsData, ...data.articles]);
     } catch (error) {
       console.error(error);
     } finally {
@@ -28,7 +28,7 @@ const Politics = () => {
   }, [fetchNewsData]);
 
   const handleLoadMore = () => {
-    setPage(prevPage => prevPage + 1);
+    setPage((prevPage) => prevPage + 1);
   };
 
   return (
@@ -36,8 +36,12 @@ const Politics = () => {
       <h1 className="text-center">Politics News</h1>
       <NewsItems newsData={newsData} loading={loading} />
       <div className="text-center">
-        <button className="btn btn-primary" onClick={handleLoadMore} disabled={loading}>
-          {loading ? 'Loading...' : 'Load More'}
+        <button
+          className="btn btn-primary"
+          onClick={handleLoadMore}
+          disabled={loading}
+        >
+          {loading ? "Loading..." : "Load More"}
         </button>
       </div>
     </div>
