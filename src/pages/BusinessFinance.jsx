@@ -1,6 +1,6 @@
 
 
-import React from "react";
+import NewsItems from "../components/NewsItems";
 
 function BusinessFinance() {
   const pageStyle = {
@@ -19,7 +19,7 @@ function BusinessFinance() {
         <li>News Item 1</li>
         <li>News Item 2</li>
         <li>News Item 3</li>
-        {newsItems}
+        <NewsItems />
       </ul>
 
       <h3>Financial Tips</h3>
