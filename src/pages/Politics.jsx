@@ -1,33 +1,36 @@
+// Politics.jsx
 import React, { useState, useEffect } from 'react';
-import NewsItems from "../components/NewsItems";
+import NewsItems from '../components/NewsItems';
 
 const Politics = () => {
   const [page, setPage] = useState(1);
   const [newsData, setNewsData] = useState([]);
   const [loading, setLoading] = useState(false);
-  const apiKey = import.meta.env.VITE_API_KEY; // Retrieve API key from environment variables
-  console.log("API Key:", apiKey);
 
   useEffect(() => {
+    const apiKey = 'c9318c4d0427a6590c4a955b279cf93b';
+    const url = `https://gnews.io/api/v4/top-headlines?category=politics&lang=en&country=us&apikey=${apiKey}`;
+
     const fetchNewsData = async () => {
-      const pageSize = 10; // Number of articles per page
-      const url = `https://newsdata.io/api/1/news?apikey=${apiKey}&q=Politics`;
-
       setLoading(true);
-
       try {
+        console.log('Fetching data from:', url);
         const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
         const data = await response.json();
-        setNewsData(prevNewsData => [...prevNewsData, ...data]);
+        console.log('Received data:', data);
+        setNewsData(prevNewsData => [...prevNewsData, ...data.articles]);
       } catch (error) {
-        console.error(error);
+        console.error('Error fetching data:', error);
       } finally {
         setLoading(false);
       }
     };
 
     fetchNewsData();
-  }, [page, apiKey]); // Fetch data whenever page or apiKey changes
+  }, [page]); // Fetch data whenever page changes
 
   const handleLoadMore = () => {
     setPage(prevPage => prevPage + 1);
