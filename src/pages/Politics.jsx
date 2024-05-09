@@ -1,4 +1,3 @@
-// Politics.jsx
 import React, { useState, useEffect } from 'react';
 import NewsItems from '../components/NewsItems';
 
