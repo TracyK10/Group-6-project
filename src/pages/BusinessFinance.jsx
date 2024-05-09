@@ -19,7 +19,7 @@ function BusinessFinance() {
         <li>News Item 1</li>
         <li>News Item 2</li>
         <li>News Item 3</li>
-        {/*placeholders with actual news items */}
+        {newsItems}
       </ul>
 
       <h3>Financial Tips</h3>
@@ -28,10 +28,10 @@ function BusinessFinance() {
         <li>Tip 1: Budgeting</li>
         <li>Tip 2: Investing wisely</li>
         <li>Tip 3: Saving for retirement</li>
-        { /*placeholders with actual financial tips */}
+        { newsItems}
       </ul>
 
-      {/* Add more sections or content as needed */}
+    
     </div>
   );
 }
