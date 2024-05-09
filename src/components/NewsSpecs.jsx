@@ -1,3 +1,4 @@
+
 import { useState,useEffect } from 'react'
 import './App.css'
 import Sports from '../pages/Sports'
@@ -18,3 +19,4 @@ const [news, setArticle] = useState([])
 }
 
 export default NewsSpecs
+
