@@ -1,12 +1,16 @@
-import NavBar from "../components/NavBar"
+import Highlights from "../components/Highlights";
+import Header from "../components/NavBar"
+import "../pages/Home.css"
 function Home() {
   return (
     <>
-    <header>
-      <NavBar />
-    </header>
-    <div>
-      <h1>Hello</h1>
+      <Header />
+      <div style={{ textAlign: "center"}}>
+        <h1>Hello, Welcome to our news app!</h1>
+        <em>
+          <h3>Feel free to navigate using the navigation bar.</h3>
+        </em>
+        <Highlights />
       </div>
     </>
   );

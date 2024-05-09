@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 import NewsItems from "../components/NewsItems";
+import Header from "../components/Header";
 
 const Politics = () => {
   const [page, setPage] = useState(1);
@@ -10,7 +11,7 @@ const Politics = () => {
   
   const fetchNewsData = useCallback(async () => {
     const pageSize = 10; // Number of articles per page
-    const url = `https://newsdata.io/api/1/news?apikey=${apiKey}&q=pegasus&language=en`;
+    const url = `https://newsdata.io/api/1/news?apikey=pub_438278c5e9203bb36296fedef79f591c3a9f8&q=pegasus&language=en`;
 
     setLoading(true);
 
@@ -34,9 +35,11 @@ const Politics = () => {
   };
 
   return (
+    <>
+      <Header />
     <div className="container">
       <h1 className="text-center">Politics News</h1>
-      <NewsItems newsData={newsData} loading={loading} />
+      <NewsItems news={newsData} loading={loading} />
       <div className="text-center">
         <button
           className="btn btn-primary"
@@ -46,7 +49,8 @@ const Politics = () => {
           {loading ? "Loading..." : "Load More"}
         </button>
       </div>
-    </div>
+      </div>
+    </>
   );
 };
 
