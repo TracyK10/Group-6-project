@@ -6,10 +6,11 @@ const Politics = () => {
   const [newsData, setNewsData] = useState([]);
   const [loading, setLoading] = useState(false);
   const apiKey = import.meta.env.VITE_API_KEY; // Retrieve API key from environment variables
+  console.log("API Key:", apiKey);
   
   const fetchNewsData = useCallback(async () => {
     const pageSize = 10; // Number of articles per page
-    const url = `https://newsdata.io/api/1/news?apikey=${apiKey}&q=pegasus&language=en`;
+    const url = ` https://newsdata.io/api/1/news?apikey=${apiKey}&q=Politics`;
 
     setLoading(true);
 
