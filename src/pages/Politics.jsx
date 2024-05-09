@@ -10,7 +10,7 @@ const Politics = () => {
   
   const fetchNewsData = useCallback(async () => {
     const pageSize = 10; // Number of articles per page
-    const url = ` https://newsdata.io/api/1/news?apikey=${apiKey}&q=Politics`;
+    const url = `https://newsdata.io/api/1/news?apikey=${apiKey}&q=pegasus&language=en`;
 
     setLoading(true);
 
