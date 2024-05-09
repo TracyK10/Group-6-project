@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import NewsItems from "../components/NewsItems";
-import { API_KEY } from 'dotenv/config'; 
+ const API_KEY = process.env.API_KEY;
 
 const Politics = () => {
   const [page, setPage] = useState(1);

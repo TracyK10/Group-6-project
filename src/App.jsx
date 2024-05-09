@@ -1,8 +1,10 @@
 
+require('dotenv').config();
 import { Outlet } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import Header from "../components/Header";
 import Highlights from "../components/Highlights";
+
 
 const App = () => {
   return (
