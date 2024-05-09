@@ -7,7 +7,7 @@ function Highlights() {
   useEffect(() => {
     const fetchHighlights = async () => {
       try {
-        const response = await fetch(`https://newsapi.org/v2/top-headlines?country=KENYA&apiKey=${API_KEY}`);
+        const response = await fetch(`https://newsapi.org/v2/top-headlines?country=ke&apiKey=${API_KEY}`);
         const data = await response.json();
         setHighlights(data.articles);
       } catch (error) {
