@@ -1,9 +1,11 @@
 import Highlights from "../components/Highlights";
 import Header from "../components/NavBar"
 // import "../pages/Home.css"
+import Layout from "../Layout";
 function Home() {
+  
   return (
-    <>
+    <Layout>
       <Header />
       <div style={{ textAlign: "center" }}>
         <h1>Hello, Welcome to our news app!</h1>
@@ -12,7 +14,7 @@ function Home() {
         </em>
       </div>
       <Highlights />
-    </>
+    </Layout>
   );
 }
 

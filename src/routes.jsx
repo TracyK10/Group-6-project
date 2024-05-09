@@ -5,6 +5,7 @@ import Politics from "./pages/Politics";
 import Sports from "./pages/Sports";
 import Home from "./pages/Home";
 import ErrorPage from "./pages/ErrorPage";
+import FeedBack from "./pages/FeedBack";
 
 const routes = [
   {
@@ -35,6 +36,11 @@ const routes = [
   {
     path: "/entertainment",
     element: <Entertainment />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/feedback",
+    element: <FeedBack />,
     errorElement: <ErrorPage />,
   },
 ];

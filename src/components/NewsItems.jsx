@@ -18,6 +18,8 @@ function NewsItems({ news }) {
           border: "1px solid #e0e0e0",
           borderRadius: "8px",
           boxShadow: "7px 10px 20px grey",
+          minWidth: 200,
+          marginBottom: 10,
         }}
       >
         <CardMedia

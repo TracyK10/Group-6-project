@@ -15,8 +15,9 @@ useEffect(() => {
 }, [API_KEY]);
 
   return (
-    <div>
+    <>
       <Header />
+    <div>
       <h1 style={{textAlign: 'center', textDecoration:'underline'}}>Other News</h1>
       <div  style={{display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap', paddingLeft:20}}>
     {
@@ -24,7 +25,8 @@ useEffect(() => {
       <NewsItems key={article.id} news={article} />
         ))}
       </div>
-    </div>
+      </div>
+    </>
   )
 }
 

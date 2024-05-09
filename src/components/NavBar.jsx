@@ -24,6 +24,9 @@ function NavBar(){
           <li>
             <Link to="/othernews">Other News</Link>
           </li>
+          <li>
+            <Link to="/feedback">Feedback</Link>
+          </li>
         </ul>
       </nav>
     );
