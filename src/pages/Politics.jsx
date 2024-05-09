@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import NewsItems from "../components/NewsItems";
 
 const Politics = () => {
@@ -7,27 +7,27 @@ const Politics = () => {
   const [loading, setLoading] = useState(false);
   const apiKey = import.meta.env.VITE_API_KEY; // Retrieve API key from environment variables
   console.log("API Key:", apiKey);
-  
-  const fetchNewsData = useCallback(async () => {
-    const pageSize = 10; // Number of articles per page
-    const url = ` https://newsdata.io/api/1/news?apikey=${apiKey}&q=Politics`;
-
-    setLoading(true);
-
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-      setNewsData(prevNewsData => [...prevNewsData, ...data]);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
-  }, [page, apiKey]); // Fetch data whenever page or apiKey changes
 
   useEffect(() => {
+    const fetchNewsData = async () => {
+      const pageSize = 10; // Number of articles per page
+      const url = `https://newsdata.io/api/1/news?apikey=${apiKey}&q=Politics`;
+
+      setLoading(true);
+
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+        setNewsData(prevNewsData => [...prevNewsData, ...data]);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
     fetchNewsData();
-  }, [fetchNewsData]);
+  }, [page, apiKey]); // Fetch data whenever page or apiKey changes
 
   const handleLoadMore = () => {
     setPage(prevPage => prevPage + 1);
