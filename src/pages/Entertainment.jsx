@@ -1,5 +1,5 @@
 import  { useState, useEffect } from "react";
-import NewsItem from "../components/NewsItem"; 
+import NewsItems from "../components/NewsItems"; 
 const EntertainmentNews = () => {
   const API_KEY = import.meta.env.VITE_SECRET_KEY; 
   const [entertainmentNews, setEntertainmentNews] = useState([]);
@@ -24,10 +24,10 @@ const EntertainmentNews = () => {
 
   return (
     <div>
-      <h1>Entertainment News</h1>
-      <div>
+      <h1 style={{textAlign: 'center', textDecoration:'underline'}}>Entertainment News</h1>
+      <div  style={{display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap', paddingLeft:20}}>
         {entertainmentNews.map((article) => (
-          <NewsItem key={article.id} article={article} />
+          <NewsItems key={article.id} article={article} />
         ))}
       </div>
     </div>

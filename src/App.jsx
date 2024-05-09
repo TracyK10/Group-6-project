@@ -1,16 +1,18 @@
 import { Outlet } from "react-router-dom";
-import NavBar from "./components/NavBar";
+import NavBar from "../components/NavBar";
+import Header from "../components/Header";
+import Highlights from "../components/Highlights";
 
-function App() {
-
+const App = () => {
   return (
-    <>
-      <header>
-        <NavBar />
-      </header>
+    <div>
+      <NavBar />
+      <Header />
+      <Highlights />
+      {/* This is where the route components will be rendered */}
       <Outlet />
-    </>
+    </div>
   );
-}
+};
 
 export default App;
