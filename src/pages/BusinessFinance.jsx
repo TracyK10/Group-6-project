@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import NewsItems from "../components/NewsItems";
 import Header from "../components/Header";
+import Layout from "../Layout"
 
 function BusinessFinance() {
  const API_KEY = import.meta.env.VITE_SECRET_KEY;
@@ -15,7 +16,7 @@ function BusinessFinance() {
  }, [API_KEY]);
 
   return (
-    <>
+    <Layout >
       <Header />
       <div>
         <h2>Business & Finance</h2>
@@ -48,7 +49,7 @@ function BusinessFinance() {
           <li>Tip 3: Saving for retirement</li>
         </ul>
       </div>
-    </>
+    </Layout>
   );
 }
 
