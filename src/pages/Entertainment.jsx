@@ -9,7 +9,7 @@ const EntertainmentNews = () => {
   useEffect(() => {
     const fetchEntertainmentNews = async () => {
       const response = await fetch(
-        `https://newsapi.org/v2/top-headlines?category=entertainment&apiKey=${API_KEY}`
+        `https://newsapi.org/v2/top-headlines?category=entertainment&language=en&sortby=publishedAt&apiKey=${API_KEY}`
       );
       const data = await response.json();
       setEntertainmentNews(data.articles);
