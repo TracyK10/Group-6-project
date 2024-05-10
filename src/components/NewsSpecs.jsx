@@ -1,22 +1,16 @@
+/* eslint-disable react/prop-types */
 
-import { useState,useEffect } from 'react'
-import './App.css'
-import Sports from '../pages/Sports'
-
-function NewsSpecs() {
-  
-const [news, setArticle] = useState([])
-
-  useEffect(()=>{
-    fetch("https://newsapi.org/v2/everything?q=athletics&from=2024-05-07&sortBy=publishedAt&apiKey=582b2ea907044a1faf4d7e1f5f116e82")
-    .then(res=>res.json())
-    .then(data=>setArticle(data.articles))
-  },[])
-  console.log(news)
+function NewsSpecs({ news }) {
   return (
-     <Sports articles={news} />
-  )
+    <div>
+      <h3>{news.title}</h3>
+      <img src={news.urlToImage} alt={news.title} />
+      <h4>
+        Author: <span>{news.author}</span>
+      </h4>
+      <p>{ news.description}</p>
+    </div>
+  );
 }
 
-export default NewsSpecs
-
+export default NewsSpecs;
