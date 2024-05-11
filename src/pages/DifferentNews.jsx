@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import NewsItems from "../components/NewsItems";
-import NavBar from "../components/NavBar"
+import Header from "../components/Header";
 
 function DifferentNews() {
   const API_KEY = import.meta.env.VITE_SECRET_KEY;
@@ -15,10 +15,9 @@ useEffect(() => {
 }, [API_KEY]);
 
   return (
+    <>
+      <Header />
     <div>
-      <header>
-        <NavBar />
-      </header>
       <h1 style={{textAlign: 'center', textDecoration:'underline'}}>Other News</h1>
       <div  style={{display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap', paddingLeft:20}}>
     {
@@ -26,10 +25,9 @@ useEffect(() => {
       <NewsItems key={article.id} news={article} />
         ))}
       </div>
-    </div>
+      </div>
+    </>
   )
 }
 
 export default DifferentNews
-
-

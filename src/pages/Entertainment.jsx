@@ -1,5 +1,6 @@
 import  { useState, useEffect } from "react";
 import NewsItems from "../components/NewsItems"; 
+import Header from "../components/Header";
 const EntertainmentNews = () => {
   const API_KEY = import.meta.env.VITE_SECRET_KEY; 
   const [entertainmentNews, setEntertainmentNews] = useState([]);
@@ -8,7 +9,7 @@ const EntertainmentNews = () => {
   useEffect(() => {
     const fetchEntertainmentNews = async () => {
       const response = await fetch(
-        `https://newsapi.org/v2/top-headlines?category=entertainment&apiKey=${API_KEY}`
+        `https://newsapi.org/v2/top-headlines?category=entertainment&language=en&sortby=publishedAt&apiKey=${API_KEY}`
       );
       const data = await response.json();
       setEntertainmentNews(data.articles);
@@ -23,14 +24,17 @@ const EntertainmentNews = () => {
   }
 
   return (
+    <>
+      <Header />
     <div>
       <h1 style={{textAlign: 'center', textDecoration:'underline'}}>Entertainment News</h1>
       <div  style={{display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap', paddingLeft:20}}>
         {entertainmentNews.map((article) => (
-          <NewsItems key={article.id} article={article} />
+          <NewsItems key={article.id} news={article} />
         ))}
       </div>
-    </div>
+      </div>
+    </>
   );
 };
 
