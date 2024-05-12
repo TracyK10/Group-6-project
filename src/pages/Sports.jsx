@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import "../App.css";
 import NewsSpecs from "../components/NewsSpecs";
 import Header from "../components/Header";
+import Layout from "../Layout"
 
 function Sports() {
   const [news, setArticle] = useState([]);
@@ -17,8 +18,9 @@ function Sports() {
   }, []);
 
   return (
-    <>
+    <Layout >
       <Header />
+      <h1 style={{fontSize:"48px"}}>Sports News</h1>
       <div
         style={{
           display: "flex",
@@ -32,7 +34,7 @@ function Sports() {
           <NewsSpecs news={article} key={index} />
         ))}
       </div>
-    </>
+    </Layout>
   );
 }
 

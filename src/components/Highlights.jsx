@@ -9,6 +9,7 @@ import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
 
 function Highlights() {
+  
   const [highlights, setHighlights] = useState([]);
   const API_KEY = "9337c7af91cb42c0ba5560f4edc64bb9";
 
@@ -30,7 +31,8 @@ function Highlights() {
 
   return (
     <div className="highlights-container">
-      <h2>Kenya News Highlights</h2>
+      <h2 style={{fontSize:"48px"}}>Kenya News Highlights</h2>
+      <br />
       <div
         style={{
           display: "flex",
@@ -67,7 +69,7 @@ function Highlights() {
             </CardContent>
             <CardActions>
               <Button size="small">
-                <Link to={article.url}>Learn More</Link>
+                <Link target="__blank" to={article.url}>Learn More</Link>
               </Button>
             </CardActions>
           </Card>

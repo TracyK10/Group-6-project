@@ -1,102 +1,81 @@
-// import { useState, useEffect } from "react";
+import { useState } from 'react';
+import Header from '../components/Header';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import Layout from "../Layout";
+import Button from 'react-bootstrap/Button';
+import { Form } from 'react-bootstrap';
 
-// import TextField from "@material-ui/core/TextField";
-// import Button from "@material-ui/core/Button";
-
-// const useStyles = makeStyles((theme) => ({
-//   form: {
-//     display: "flex",
-//     flexDirection: "column",
-//     alignItems: "center",
-//     "& .MuiTextField-root": {
-//       margin: theme.spacing(1),
-//       width: "25ch",
-//     },
-//   },
-// }));
-
-const Feedback = () => {
-  const classes = useStyles();
+function FeedBack() {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    comment: "",
+    name: '',
+    email: '',
+    comment: ''
   });
-  const [submitted, setSubmitted] = useState(false);
 
-  useEffect(() => {
-    const handleSubmit = () => {
-      if (!formData.name || !formData.email || !formData.comment) {
-        return;
-      }
-      fetch("your-backend-url", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Failed to save feedback");
-          }
-          setSubmitted(true);
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-        });
-    };
-
-    handleSubmit();
-  }, [formData]);
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [name]: value,
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value
     }));
   };
 
-  return (
-    <div>
-      {submitted ? (
-        <p>Thank you for your feedback!</p>
-      ) : (
-        <form className={classes.form}>
-          <TextField
-            id="name"
-            name="name"
-            label="Name"
-            value={formData.name}
-            onChange={handleChange}
-            variant="outlined"
-          />
-          <TextField
-            id="email"
-            name="email"
-            label="Email"
-            value={formData.email}
-            onChange={handleChange}
-            variant="outlined"
-          />
-          <TextField
-            id="comment"
-            name="comment"
-            label="Comment"
-            multiline
-            rows={4}
-            value={formData.comment}
-            onChange={handleChange}
-            variant="outlined"
-          />
-          <Button type="submit" variant="contained" color="primary">
-            Submit
-          </Button>
-        </form>
-      )}
-    </div>
-  );
-};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Make a POST request with formData
+    fetch('', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
+    .then(response => {
+      if (response.ok) {
+        // Handle success, e.g., show a success message
+        console.log('Feedback submitted successfully');
+        alert('Thank you for your feedback!')
+      } else {
+        // Handle errors
+        console.error('Failed to submit feedback');
+        alert('Failed to submit feedback!')
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+  };
 
-export default Feedback;
+  return (
+    <Layout>
+      <Header />
+      <div style={{ padding: "6px", maxWidth: "600px", display: "block", margin: "0 auto", paddingTop: "10px" }}>
+        <h1>Kindly provide us with your feedback 😄</h1>
+        <form onSubmit={handleSubmit}>
+          <Row className="mb-3">
+            <Form.Label column sm="2">Name</Form.Label>
+            <Col sm="10">
+              <Form.Control type="text" placeholder="Kevin Guerrero" name="name" value={formData.name} onChange={handleChange} />
+            </Col>
+          </Row>
+          <Row className="mb-3">
+            <Form.Label column sm="2">Email address</Form.Label>
+            <Col sm="10">
+              <Form.Control type="email" placeholder="dibbuc@govjo.fk" name="email" value={formData.email} onChange={handleChange} />
+            </Col>
+          </Row>
+          <Row className="mb-3">
+            <Form.Label column sm="2">Comments...</Form.Label>
+            <Col sm="10">
+              <Form.Control as="textarea" rows={3} placeholder="The app is ..." name="comment" value={formData.comment} onChange={handleChange} />
+            </Col>
+          </Row>
+          <Button type="submit" variant="dark">Submit</Button>
+        </form>
+      </div>
+    </Layout>
+  );
+}
+
+export default FeedBack;

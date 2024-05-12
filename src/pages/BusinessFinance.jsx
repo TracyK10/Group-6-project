@@ -19,7 +19,7 @@ function BusinessFinance() {
     <Layout >
       <Header />
       <div>
-        <h2>Business & Finance</h2>
+        <h2 style={{fontSize:"48px"}}>Business & Finance</h2>
         <p>
           Welcome to the Business & Finance section of our website. Here, you
           will find valuable information, news, and insights related to business

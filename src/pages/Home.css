@@ -1,3 +1,14 @@
-body{
-    background-color: #89a6ce;
+.hero{
+    text-align: center;
+    background-image: url(https://i.pinimg.com/564x/e6/00/c9/e600c99974576450e8e803d453297434.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px;
+}
+
+h1{
+    color: white;
+    font-size: 50px;
+    padding-top: 200px;
+    text-align: right;
 }
