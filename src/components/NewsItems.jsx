@@ -39,7 +39,7 @@ function NewsItems({ news }) {
           </Typography>
         </CardContent>
         <CardActions>
-          <Link to={url}>
+          <Link target="__blank" to={url}>
             <Button variant="contained" size="small">
               Learn More
             </Button>
